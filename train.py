@@ -22,6 +22,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # ===========================================
 
 EXPERIMENT_TYPE = 'Wing'
+# EXPERIMENT_TYPE = 'MSE'  # 可选 'MSE' 或 'Wing'
+
 
 if EXPERIMENT_TYPE == 'MSE':
     LOG_DIR = 'runs/experiment_MSE'
@@ -232,7 +234,7 @@ def main():
         # 保存最优模型
         if avg_val_loss < best_loss:
             best_loss = avg_val_loss
-            torch.save(model.state_dict(), "best_model.pth")
+            torch.save(model.state_dict(), SAVE_NAME)
             print(f"✅ 发现更优模型，已保存 (Loss: {best_loss:.6f})")
         
         print("-" * 60) # 分割线
