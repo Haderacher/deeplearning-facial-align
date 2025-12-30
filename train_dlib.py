@@ -3,7 +3,7 @@ import os
 import time
 
 # ================= 配置 =================
-XML_FILE = './processed_data/training_with_face_landmarks.xml'
+XML_FILE = './processed_data/dlib_train.xml'
 OUTPUT_MODEL = 'dlib_baseline_model.dat'
 # =======================================
 
