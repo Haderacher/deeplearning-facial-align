@@ -26,7 +26,7 @@
 2. 核心模型：构建基于 ResNet-18 的深度卷积神经网络，直接回归 68 个关键点的 $(x, y)$ 坐标。
 3. 优化策略：对比 均方误差 (MSE Loss) 与 Wing Loss。Wing Loss 通过对数函数放大主要误差区间的梯度，旨在解决 MSE 在训练后期对小误差不敏感的问题，从而提升眼角、嘴角等细节的定位精度。
 
-## 实验结果
+## 实验报告
 
 #### 实验设置
 
@@ -44,7 +44,7 @@
 
 下图展示了 ResNet-18 模型在使用 Wing Loss 训练过程中的 Loss 下降曲线。
 
-![](image1.png)
+![](static/image1.png)
 
 模型在前 10 个 Epoch 损失迅速下降，学习到了人脸的平均形状（Mean Shape）；在 20 Epoch 后进入微调阶段，验证集 Loss 持续走低且未出现明显过拟合，证明模型具有良好的泛化能力。
 
@@ -58,7 +58,7 @@
 | ResNet-18 | 深度学习 | MSE Loss | 0.0343 | +23.7% (vs Dlib) | GPU |
 | ResNet-18 (Ours) | 深度学习 | Wing Loss | 0.0311 | +30.4%(vs MSE) | GPU |
 
-![](nme_comparison_bar.png)
+![](static/nme_comparison_bar.png)
 
 #### 数据分析
 
@@ -70,12 +70,15 @@
 
 为了直观展示模型性能，我们选取了测试集中的困难样本（大姿态、戴眼镜）进行可视化对比。
 
-![图 3：困难样本可视化对比（左：MSE预测，右：Wing Loss预测）](image3.png)
+![图 3：困难样本可视化对比（左：MSE预测，右：Wing Loss预测）](static/image3.png)
+![图 3：困难样本可视化对比（左：MSE预测，右：Wing Loss预测）](static/image4.png)
+![图 3：困难样本可视化对比（左：MSE预测，右：Wing Loss预测）](static/image5.png)
+
 
 **案例分析**：如图 3 所示，在极端情况下，MSE 模型倾向于预测出"平均脸"的形态（如眼镜干扰），导致关键点偏离真实轮廓。而采用 Wing Loss 的模型能够精确贴合眼睑和唇线边缘。这表明改进后的损失函数显著提升了模型对细节特征的捕捉能力。
 
 
-## 第三部分：未来展望 (Future Outlook)
+## 第三部分：总结报告
 
 ### 3.1 现有工作的不足
 
