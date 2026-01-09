@@ -3,3 +3,5 @@ raw_300w/
 processed_data/
 best_model.pth
 raw_300w.zip
+best_model_mse.pth
+best_model_wing.pth
